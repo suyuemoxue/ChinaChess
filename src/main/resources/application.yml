@@ -1,26 +1,3 @@
-#spring:
-#热部署生效
-#  devtools:
-#    restart:
-#      enabled: true
-#      additional-paths: src/main
-#      exclude: static/**
-
-#  datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/chess?serverTimezone=UTC&useServerPrepStmts=true
-#    username: root
-#    #    password: sxj045115
-#    password: ok
-#mybatis:
-#  configuration:
-#配置项：开启下划线到驼峰的自动转换. 作用：将数据库字段根据驼峰规则自动注入到对象属性。
-#    map-underscore-to-camel-case: true
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#  mapper-locations: classpath:mapper/*.xml
-#  profiles:
-#    active: dev
-
 mybatis:
   configuration:
     jdbc-type-for-null: 'null'
