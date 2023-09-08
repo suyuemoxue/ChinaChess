@@ -1,0 +1,291 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    background-color: #ffead1;
+    background-image: url("../image/BOARD.jpg");
+    background-size: 47% 95%;
+    /*     background-size: 800px 800px;*/
+    background-repeat: no-repeat; /*不会出现平铺或者重复*/
+    background-attachment: fixed; /*背景图片不会随着页面的滚动而滚动*/
+    background-position: center; /**/
+    /*margin: 0 auto;*/
+    left: 25%;
+    border: 1px black solid;
+    position: fixed;
+    width: 850px;
+    height: 947px;
+
+}
+
+/*调整象棋位置*/
+.chessImg, .emptyImg {
+    /*默认数据*/
+    /*margin-right: 11px;
+   margin-left: 11px;
+    margin-top: 19.5px;*/
+    /*测试数据*/
+    /*   margin-top: 1.5%;
+       margin-bottom: 1.5%;
+       margin-left: 2.25%;
+       margin-right: 2.25%;
+   */
+    /*margin-top: 20px;*/
+    /*margin-bottom: 15px;*/
+    /*margin-left: 22px;*/
+    /*margin-right: 22px;*/
+
+    /*!*默认数据*!*/
+    /*height: 50px;*/
+    /*width: 50px;*/
+
+    margin-top: 19px;
+    margin-bottom: 10px;
+    margin-left: 15px;
+    margin-right: 13px;
+
+    /*默认数据*/
+    height: 65px;
+    width: 65px;
+
+}
+
+#myModal {
+    /* border: 5px yellow solid;*/;
+}
+
+#myModal .modal-body {
+    height: 500px !important;;
+    max-height: 500px !important;
+    overflow-y: auto;
+    padding: 0;
+}
+
+#myTable {
+    /*    height: 500px;
+    border: 5px pink solid;
+    /*  text-overflow:ellipsis;
+      white-space: nowrap;*/
+    table-layout: fixed;
+    width: 100%;
+}
+
+thead tr th {
+    background-color: white;
+    position: sticky;
+    top: 0;
+}
+
+#myTable tbody {
+    height: 300px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.fontStyle {
+    color: yellow;
+    text-shadow: 2px 2px 8px red;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+/* 不换行 */
+.noWrap {
+    word-break: keep-all;
+    /* 不换⾏ */
+    white-space: nowrap;
+    /* 不换⾏ */
+
+}
+
+#myTable tr th:nth-child(-n+1) {
+    /*background-color: red;*/
+    white-space: nowrap;
+    /* 不换⾏ */
+    overflow: hidden;
+    /*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*/
+    text-overflow: ellipsis;
+}
+
+#myTable tr th:nth-child(n+3) {
+    /*background-color: green;*/
+    white-space: nowrap;
+    /* 不换⾏ */
+    overflow: hidden;
+    /*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*/
+    text-overflow: ellipsis;
+}
+
+#myTable tr th:nth-child(2) {
+    /*word-break: keep-all;*/
+    /* word-break: break-all; */
+
+    /* white-space: nowrap; */
+    white-space: pre;
+    overflow: hidden;
+    /*    !*不显示超过对象尺寸的内容（这个绝对不能少）,也就是说设置td里面的数据无论有多少，都不会换行*!*/
+    text-overflow: ellipsis;
+    /*将被隐藏的那部分用省略号代替*/
+}
+
+#main {
+    position: center;
+    text-align: center;
+}
+
+.setUpDiv {
+    border: 5px red solid;
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+}
+
+.beginBtn {
+    /*position: absolute;
+    margin-left: 75%;
+    margin-top: 12%;*/
+    width: 25%;
+    height: 70%;
+    position: fixed;
+    margin: 0 auto;
+    right: 0;
+    bottom: 0;
+
+}
+
+.give-up {
+    position: absolute;
+    margin-left: 75%;
+    margin-top: 12%;
+}
+
+.hover {
+    cursor: pointer;
+}
+
+.check {
+    border: 2px solid firebrick;
+}
+
+
+.loginUserParentDiv {
+    width: 25%;
+    height: 30%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: grid;
+}
+
+#loginUserDiv {
+    position: absolute;
+    /* background-color: pink;*/
+    font-size: 50px;
+    /*垂直居中*/
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    /* background-color: #e4e4e4; */
+}
+
+
+/* 旋转标签 */
+.rotateDom {
+    /* z-index: 200;*/
+    transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    /* IE 9 */
+    -moz-transform: rotate(-180deg);
+    /* Firefox */
+    -webkit-transform: rotate(-180deg);
+    /* Safari and Chrome */
+    -o-transform: rotate(-180deg);
+    /* Opera */
+}
+
+.redChess {
+    /*字体颜色和棋子颜色一样*/
+    /* color: red;
+     background-color: black;
+     !* background-color: white;*!
+     text-shadow: 2px 2px 8px white;*/
+    /*背景色和棋子颜色一样*/
+    color: black;
+    background-color: hotpink;
+    /* background-color: white;*/
+    text-shadow: 2px 2px 8px white;
+}
+
+.blackChess {
+    /*字体颜色和棋子颜色一样*/
+    /*color: black;*/
+    /*background-color: white;*/
+    /*!*text-shadow: 2px 2px 8px red;*!*/
+    /*text-shadow: 2px 2px 8px yellow;*/
+    /*背景色和棋子颜色一样*/
+    color: white;
+    background-color: black;
+    /*text-shadow: 2px 2px 8px red;*/
+    text-shadow: 2px 2px 8px yellow;
+}
+
+.umDiv {
+    text-align: center;
+    font-size: 3em;
+
+    /*left: 0;*/
+    /*top: 0;*/
+    /*   background-color: yellow;*/
+    width: 25%;
+    height: 100%;
+}
+
+.umParentCommon {
+    /* color: white;
+ background-color: black;*/
+    /* background-color: #e4e4e4; */
+    position: fixed;
+    /*background-color: black;*/
+    left: 0;
+    width: 25%;
+    height: 50%;
+    display: grid;
+}
+
+.makerParentDiv {
+    /*   color: black;
+       background-color: white;*/
+    /*    background-color: #e4e4e4;*/
+    top: 0;
+}
+
+/*垂直居中*/
+.useParentDiv {
+    top: 50%;
+}
+
+#userDiv, #makerDiv {
+    /* background-color: red;*/
+    /*垂直居中*/
+    align-self: center;
+    justify-self: center;
+    /*color: yellow;*/
+    /*background-color: #999;*/
+    /*background-color: #e4e4e4;*/
+    font-weight: bolder;
+    text-shadow: 2px 2px 8px red;
+}
+
+#userDiv > a:hover, #makerDiv > a:hover {
+    color: yellow;
+    /*background-color: #999;*/
+    /*background-color: #e4e4e4;*/
+    font-weight: bolder;
+    text-shadow: 2px 2px 8px red;
+}
+

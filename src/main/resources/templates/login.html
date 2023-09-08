@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录/注册</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="from-box">
+        <!-- 注册 -->
+        <form action="/register" method="post">
+            <div class="register-box hidden">
+                <h1>register</h1>
+                <!-- 隐藏域 -->
+                <!--/*@thymesVar id="loginType" type="ch"*/-->
+                <input type="hidden" name="loginType" th:value="${loginType}"/>
+
+                <input type="text" name="uname" placeholder="用户名"> <input
+                    type="password" name="upwd" placeholder="密码">
+                <button type="submit" id="login">注册</button>
+            </div>
+        </form>
+        <!-- 登录 -->
+        <form action="/loginIn" method="post">
+            <!-- 隐藏域 -->
+            <!--/*@thymesVar id="loginType" type="ch"*/-->
+            <input type="hidden" name="loginType" th:value="${loginType}"/>
+            <div class="login-box">
+                <h1>login</h1>
+                <input type="text" name="uname" placeholder="用户名"> <input
+                    type="password" name="upwd" placeholder="密码">
+                <button>登录</button>
+            </div>
+        </form>
+    </div>
+    <div class="con-box left">
+        <h2>
+            欢迎来到<span>象棋大战</span>
+        </h2>
+        <img src="image/1.png" alt="">
+        <p>已有账号</p>
+        <button id="gologin">去登录</button>
+    </div>
+    <div class="con-box right">
+        <h2>
+            欢迎来到<span>象棋大战</span>
+        </h2>
+        <img src="image/2.png" alt="">
+        <p>没有账号?</p>
+        <button id="goregister">去注册</button>
+    </div>
+</div>
+<script>
+    //要操作到的元素
+    let login = document.getElementById("gologin");
+    let register = document.getElementById("goregister");
+    let form_box = document.getElementsByClassName("from-box")[0];
+    let register_box = document.getElementsByClassName("register-box")[0];
+    let login_box = document.getElementsByClassName("login-box")[0];
+    //点击去注册按钮点击事件
+    register.addEventListener('click', () => {
+        form_box.style.transform = 'translateX(80%)';
+        login_box.classList.add('hidden');
+        register_box.classList.remove('hidden');
+    })
+    //点击去登录按钮点击事件
+    login.addEventListener('click', () => {
+        form_box.style.transform = 'translateX(0%)';
+        register_box.classList.add('hidden');
+        login_box.classList.remove('hidden');
+    })
+</script>
+</body>
+</html>

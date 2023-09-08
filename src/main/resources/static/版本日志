@@ -1,0 +1,11 @@
+以前写法(请放弃)：
+        方式一：
+        <button class="btn" th:onclick="'getName(\'' + ${person.name} + '\');'">获得名字</button>
+        方式二：
+        <button class="btn" th:onclick="'getName(' + ${person.name} + ');'">获得名字</button>
+        方式三：
+        <button th:onclick="|getName(${person.name} )|">获得名字</button>-->
+
+       <!-- 现在的写法：
+        <button class="btn" th:onclick="getName([[${person.name}]]);">获得名字</button>
+<button th:onclick="gameAchievements('${session.uname}')"><span type="text">[[${session.uname}]]</span></button>

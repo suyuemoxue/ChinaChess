@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    <!--引用jar包资源-->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css"/>
+    <!--video.css-->
+    <link rel="stylesheet" href="webjars/video-js/7.1.0/video-js.css"/>
+    <!--背景视频-->
+    <link rel="stylesheet" href="css/background.css"/>
+    <link rel="stylesheet" href="css/mainMenu.css"/>
+    <!--<script src="js/jquery_2.1.4.js"></script>-->
+    <!--引用jar包资源-->
+    <script src="webjars/jquery/2.1.4/jquery.js"></script>
+    <!--引用jar包资源-->
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <!--video.js-->
+    <script src="webjars/video-js/7.1.0/video.js"></script>
+    <!--videojs-contrib-hls.min.js-->
+    <script src="webjars/sweetalert/2.1.2/dist/sweetalert.min.js"></script>
+
+    <script src="js/mainMenu.js"></script>
+    <script src="js/background.js"></script>
+</head>
+<body>
+
+<div id="">
+    <div id="menuDiv">
+        <h1>欢迎来到中国象棋！</h1>
+        <p>这是一款象棋游戏。</p>
+
+        <a href="chess">
+            <span class="btn btn-primary btn-lg" style="font-size: 100px;" href="chess">开始游戏</span>
+        </a>
+
+        <button id="soundEffect" class="btn btn-success mainToggle" onclick="soundEffect();">背景音效<span
+                class="glyphicon glyphicon-volume-up"></span></button>
+        <button id="about" class="btn btn-warning mainToggle" onclick="about();">关于<span
+                class="glyphicon glyphicon glyphicon-info-sign"></span></button>
+
+
+        <li class="btn btn-danger" onclick="mainToggle();">
+            <!--设置-->
+<!--            齿轮-->
+          <span class="glyphicon glyphicon-cog iconSize"> </span>
+<!--            手指-->
+          <span class="glyphicon glyphicon-chevron-left iconSize" style="display: none;"> </span>
+            <span class="glyphicon glyphicon-chevron-right iconSize" style="display: none;"> </span>
+        </li>
+        <!--折叠-->
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+body {
+    text-align: center;
+    background-size: 100%;
+    background-repeat: no-repeat; /*不会出现平铺或者重复*/
+    background-attachment: fixed; /*背景图片不会随着页面的滚动而滚动*/
+    background-position: center;
+    background-repeat: no-repeat;
+    /* background-color: #ffead1; */
+    background-color: transparent;
+}
+
+#userDiv {
+    opacity: 0.3;
+    font-size: 50px;
+    position: fixed;
+    right: 10%;
+    top: 10%;
+    text-align: center;
+    /* background-color: #e4e4e4; */
+}
+
+#userDiv > span:hover {
+    color: yellow;
+    /*background-color: #999;*/
+    background-color: #e4e4e4;
+    font-weight: bolder;
+    text-shadow: 2px 2px 8px red;
+}
+
+.no-background {
+    background: none;
+}
+
+.autoCenter {
+
+    opacity: 1;
+    filter: alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+    /*margin: auto;*/
+    position: fixed;
+    left: 20%;
+    bottom: 30%;
+    /*margin: 0 auto;*/
+}
+
+#menuDiv {
+    opacity: 0.3;
+    filter: alpha(opacity=40); /* 针对 IE8 以及更早的版本 */
+
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    /*left: 50%;*/
+    margin: 0 auto;
+    color: white;
+    font-weight: bold;
+}
+
+.mainToggle {
+    display: none;
+}
+/*放大图标*/
+.iconSize{
+    font-size: 50px;
+}

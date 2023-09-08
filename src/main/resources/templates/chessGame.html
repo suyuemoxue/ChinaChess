@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>象棋游戏</title>
+    <!--引用jar包资源-->
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css"/>
+    <!--video.css-->
+    <link rel="stylesheet" href="webjars/video-js/7.1.0/video-js.css"/>
+    <!--背景视频-->
+    <link rel="stylesheet" href="css/background.css"/>
+    <link rel="stylesheet" href="css/chessGame.css"/>
+    <!--引用jar包资源jquery-->
+    <script src="webjars/jquery/2.1.4/jquery.js"></script>
+    <!--引用jar包资源bootstrap-->
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.js"></script>
+    <!--引用jar包资源sweetalert-->
+    <script src="webjars/sweetalert/2.1.2/dist/sweetalert.min.js"></script>
+    <script src="webjars/video-js/7.1.0/video.js"></script>
+    <script src="js/common.js"></script>
+    <!--背景视频-->
+    <script src="js/chess.mysql.js"></script>
+    <script src="js/chess.js"></script>
+
+    <!--    手机自适应网页-->
+    <!--    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1"/>-->
+    <!-- 设置logo -->
+    <!--<link rel="icon" type="image/png" sizes="48x48" href="favicon.ico">-->
+    <!--   <link  th:href="@{/favicon.ico}"   type="image/x-icon"/>
+       <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">-->
+</head>
+<body>
+
+<div class="loginUserParentDiv">
+    <div id="loginUserDiv">
+        <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-user"></span> <span type="text">[[${session.uname}]]</span>
+            <a href="loginOut">注销</a>
+        </button>
+    </div>
+</div>
+
+
+<div class="umDiv">
+    <div class="makerParentDiv umParentCommon">
+        <div id="makerDiv">
+            <!--对方：-->
+            <img id="makerImg"/>
+            <a href="javascript:;" id="makerButton" class="btn"><span id="makerId" style="font-size: 3em;" type="text">对方</span></a>
+            <br>
+            棋子数量：<span id="makerChessNumber">0</span>
+            <br>
+            战绩：<span id="makerWinSpan" style="color: greenyellow">0</span>胜，<span id="makerFailSpan" style="color: red">0</span>负
+        </div>
+    </div>
+    <div class="useParentDiv umParentCommon">
+        <div id='userDiv'>
+            <!-- 我方：-->
+            <img id="userImg"/>
+            <!-- <a th:href="${session.uname}"><span type="text">[[${session.uname}]]</span></a>-->
+            <!--
+                    <button th:onclick="|gameAchievements(${session.uname})|"><span type="text">[[${session.uname}]]</span></button>-->
+            <a href="javascript:;" th:onclick="gameAchievements([[${session.uname}]]);">[[${session.uname}]]</a>
+            <br>
+            棋子数量：<span id="userChessNumber">0</span>
+            <br>
+            战绩：<span id="userWinSpan" style="color: greenyellow">0</span>胜，<span id="userFailSpan" style="color: red">0</span>负
+        </div>
+    </div>
+</div>
+<div>
+
+    <audio controls id="backAudio" style="display: none;"></audio>
+</div>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    对战记录
+                    <caption>
+                        <hr>
+                        <span id="whos" class="fontStyle"></span>的对战记录
+                    </caption>
+
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <table id="myTable" class="table table-strip table-condensed table-hover">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>红棋玩家</th>
+                        <th>黑棋玩家</th>
+                        <th>开始时间</th>
+                        <th>结束时间</th>
+                        <th>获胜方</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<div id="main">
+    <div id="beginBtn" class="beginBtn">
+        <div class="panel panel-default">
+            <h2 id="panel-title"></h2>
+            <div class="panel-body"></div>
+        </div>
+
+        <!-- 按钮触发模态框 -->
+        <hr>
+        <a href="/"><li class="btn">返回主页 <span class="glyphicon glyphicon-home"></span></li></a>
+        <br><br>
+        <li id="soundEffect" class="btn btn-info btn-lg" style="width: 100%;" onclick="soundEffect();">音效<span class="glyphicon glyphicon-volume-up"></span></li>
+        <br><br>
+        <li id="admitDefeatButton" style="display: none;width: 100%;" class="btn btn-danger btn-lg"
+            onclick="admitDefeat()">认输<span class="glyphicon glyphicon-remove"></span>
+        </li>
+        <br><br>
+        <button style="width: 100%;height: 15%;font-size: 15px;" type="button" class="btn btn-primary btn-lg"
+                @click="initGame()" v-text="beginGame?'重新开始':'开始匹配'"/>
+    </div>
+    <div id="chessDiv">
+        <div v-for="(chessArray,i) in chessBoard.board">
+            <img v-if="chess != null" v-for="(chess,j) in chessArray"
+                 :src="'image/'+chess.color+chess.iden+'.GIF'" class="chessImg"
+                 :class="{'check' : i == XA && j==YA,'hover' : chess.color == chessBoard.authority}"
+                 @click="moveChess(chess,i,j)"/>
+
+            <img v-else src="image/transparent.jpg" class="emptyImg"
+                 @click="moveChess(chess,i,j)"/>
+        </div>
+    </div>
+    <!-- 	<div id="userDiv">
+        <div>[[${welcomToYou}]]</div>
+        <div>[[${session.welcomToYou}]]</div>
+        <input type="text" th:value="${uname}" />
+        <span type="text">[[${uname}]]</span>
+        <div><span type="text">[[${session.uname}]]</span><a href="loginOut" >注销</a></div>
+
+        <span th:text="${flashAttribute}">[[${flashAttribute}]]</span>
+        <span th:text="${abc}">[[${abc}]]</span>
+        <span th:text="${model}">[[${model}]]</span>
+        <span th:text="${md}">[[${mds}]]</span>
+
+    </div> -->
+
+</div>
+<!--<div id="setUpDiv" class="setUpDiv">
+
+</div>-->
+
+<script src="js/vue.js"></script>
+<script src="js/axios.js"></script>
+<script src="js/chessControl.js"></script>
+</body>
+</html>
